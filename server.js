@@ -3,9 +3,10 @@ require('dotenv').config();
 
 // Create express app and import all routes from index.js
 const app = require('express')();
-const apiRoutes = require('./routes/index');
 
-app.use("/api", apiRoutes);
+const circuitRoutes = require('../circuits/');
+app.use('/api/circuits', circuitRoutes)
+
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log('Server live on port: ' + `${PORT}`));

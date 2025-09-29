@@ -1,0 +1,1 @@
+// set routs and call the controller to process inputs

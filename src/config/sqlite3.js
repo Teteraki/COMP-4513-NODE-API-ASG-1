@@ -18,7 +18,7 @@ function dbClose() {
     console.log('Database connection closed!');
 }
 
-db.close();
 
 
-module.exports = {db, dbClose};
+
+module.exports = { db, dbClose };
