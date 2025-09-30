@@ -2,6 +2,7 @@
 const router = require("express").Router();
 const constructorsController = require("./constructors.controllers");
 
-router.get("/", constructorsController.getCircuits);
+router.get("/", constructorsController.getConstructors);
+router.get("/:ref", constructorsController.getConstructorByRef);
 
 module.exports = router;
