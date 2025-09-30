@@ -1,12 +1,14 @@
-// Import our .env contents to be used in the server. e.g., PORT
-require('dotenv').config();
+require("dotenv").config();
+const express = require("express");
+const apiRouter = require("./src/api/api.js");
 
-// Create express app and import all routes from index.js
-const app = require('express')();
+const app = express();
 
-const circuitRoutes = require('../circuits/');
-app.use('/api/circuits', circuitRoutes)
+app.use(express.json());
+app.use("/api", apiRouter);
 
+const PORT = process.env.PORT || 3000;
 
-const PORT = process.env.PORT;
-app.listen(PORT, () => console.log('Server live on port: ' + `${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server live on port: ${PORT}`);
+});

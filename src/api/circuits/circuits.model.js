@@ -1,13 +1,51 @@
-const { db, dbClose} = require('../../config/sqlite3.js');
+const { db, dbClose } = require("../../config/sqlite3.js");
 
-const getAllCircuits = db.all("SELECT * FROM circuits", (err, rows) => {
-  if (err) {
-    console.error(err.message);
-  } else {
-    console.log(rows);
-  }
+function getAllCircuits() {
+  return new Promise((resolve, reject) => {
+    db.all("SELECT * FROM circuits", (err, rows) => {
+      if (err) {
+        reject(err); // reject the promise on error
+      } else {
+        resolve(rows); // resolve with the rows on success
+      }
+    });
+  });
+}
 
-  dbClose();
-});
+function getCircuitRef(circuitRef) {
+  return new Promise((resolve, reject) => {
+    db.get(
+      `SELECT * FROM circuits WHERE circuitRef = ?`,
+      [circuitRef],
+      (err, row) => {
+        if (err) {
+          return reject(err);
+        } else {
+          resolve(row);
+        }
+      }
+    );
+  });
+}
 
-modules.export = getAllCircuits;
+function getSeasonYear(year) {
+  return new Promise((resolve, reject) => {
+    db.all(
+      `SELECT circuits.*, races.round, races.name AS raceName
+       FROM circuits
+       JOIN races ON races.circuitId = circuits.circuitId
+       WHERE races.year = ?
+       ORDER BY races.round ASC`,
+      [year],
+      (err, rows) => {
+        if (err) {
+          return reject(err);
+        } else {
+          resolve(rows);
+        }
+      }
+    );
+  });
+}
+
+module.exports = { getAllCircuits, getCircuitRef, getSeasonYear };
