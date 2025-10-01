@@ -11,7 +11,7 @@ async function getDrivers(req, res) {
 
 async function getDriverByRef(req, res) {
   try {
-    const driver = await driversService.fetchDriverByRef(
+    const driver = await driversService.fetchDriverRef(
       req.params.ref
     );
     res.json(driver);
