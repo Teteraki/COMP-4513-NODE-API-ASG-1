@@ -30,14 +30,14 @@ All data is returned in **JSON format**.
 | **/api/races/:raceId**                            | Get the specified race, including circuit name, location, and country (no foreign key IDs).                                                      |
 | **/api/races/season/:year**                       | Get all races within a season, ordered by round ascending.                                                                                       |
 | **/api/races/season/:year/:round**                | Get a specific race by season and round, e.g., `/api/races/season/2022/4`.                                                                       |
-| **/api/races/circuits/:ref**                      | Get all races held at a given circuit (by circuitRef), ordered by year ascending.                                                                |
+| **/api/races/circuits/:ref**                      | Get all races held at a given circuit ref, ordered by year ascending.                                                                |
 | **/api/races/circuits/:ref/season/:start/:end**   | Get all races for a circuit between years (inclusive).                                                                                           |
-| **/api/results/:raceId**                          | Get the results for the specified race. Includes driver, race, and constructor info (no foreign keys). Sorted by grid ascending (P1 → P2 → ...). |
+| **/api/results/:raceId**                          | Get the results for the specified race. Includes driver, race, and constructor info. Sorted by grid ascending.                                   |
 | **/api/results/driver/:ref**                      | Get all results for a given driver, e.g., `/api/results/driver/max_verstappen`.                                                                  |
 | **/api/results/drivers/:ref/seasons/:start/:end** | Get all results for a driver between seasons (inclusive), e.g., `/api/results/drivers/sainz/seasons/2022/2022`.                                  |
 | **/api/qualifying/:raceId**                       | Get qualifying results for a specified race. Includes driver, race, and constructor info; sorted by position ascending.                          |
-| **/api/standings/drivers/:raceId**                | Get the current season driver standings for the specified race, sorted by position ascending. Includes driver fields as in results.              |
-| **/api/standings/constructors/:raceId**           | Get the current season constructor standings for the specified race, sorted by position ascending. Includes constructor fields as in results.    |
+| **/api/standings/drivers/:raceId**                | Get the current season driver standings for the specified race, sorted by position ascending.             |
+| **/api/standings/constructors/:raceId**           | Get the current season constructor standings for the specified race, sorted by position ascending.    |
 
 ---
 
