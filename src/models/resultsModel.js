@@ -1,5 +1,6 @@
 const db = require("../../config/sqlite3");
 
+// Format the output json based on asg rules.
 function jsonFormatter(row) {
   return {
     resultId: row.resultId,
@@ -37,6 +38,7 @@ function jsonFormatter(row) {
   };
 }
 
+// Returns the matching results from a race ID.
 async function getResultsByRace(raceId) {
   const sql = `
     SELECT
@@ -79,6 +81,7 @@ async function getResultsByRace(raceId) {
   return rows.map(jsonFormatter);
 }
 
+// Returns the results via a provided driver ref.
 async function getResultsByDriverRef(ref) {
   const sql = `
     SELECT
@@ -120,6 +123,7 @@ async function getResultsByDriverRef(ref) {
   return rows.map(jsonFormatter);
 }
 
+// Returns the driver results by reference and a year range. (inclusive)
 async function getResultsByDriverRefSeasonRange(ref, start, end) {
   const sql = `
     SELECT

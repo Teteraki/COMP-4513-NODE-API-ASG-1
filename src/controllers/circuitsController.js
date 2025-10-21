@@ -1,5 +1,6 @@
 const circuitsModel = require("../models/circuitsModel");
 
+// Request handler for all circuits.
 async function getAllCircuits(req, res, next) {
   try {
     const data = await circuitsModel.getAllCircuits();
@@ -9,6 +10,7 @@ async function getAllCircuits(req, res, next) {
   }
 }
 
+// Request handler for single circuit by ref.
 async function getCircuitByRef(req, res, next) {
   try {
     const { ref } = req.params;
@@ -23,6 +25,7 @@ async function getCircuitByRef(req, res, next) {
   }
 }
 
+// Request handler for circuits by season/year.
 async function getCircuitsBySeason(req, res, next) {
   try {
     const { year } = req.params;

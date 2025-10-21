@@ -1,5 +1,6 @@
 const db = require("../../config/sqlite3");
 
+// Format the JSON according to the asg rules.
 function jsonFormatter(row) {
   return {
     qualifyId: row.qualifyId,
@@ -28,6 +29,7 @@ function jsonFormatter(row) {
   };
 }
 
+// Query for qualifying race by ID.
 async function getQualifyingByRace(raceId) {
   const sql = `
     SELECT q.*,

@@ -1,5 +1,6 @@
 const db = require("../../config/sqlite3");
 
+// Returns all driver standings for a given race ID.
 async function getDriverStandingsByRace(raceId) {
   const sql = `
     SELECT ds.*,
@@ -42,6 +43,7 @@ async function getDriverStandingsByRace(raceId) {
   });
 }
 
+// Returns the constructor standings based on a race ID.
 async function getConstructorStandingsByRace(raceId) {
   const sql = `
     SELECT cs.*,
